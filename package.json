@@ -1,12 +1,17 @@
 {
   "name": "my-portfolio-next",
+  "homepage": "https://cjbreg.github.io/my-portfolio-next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export -o build && npm run replaceFilePaths",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "replaceFilePaths": "node replacer.js",
+    "export": "next export -o build && npm run replaceFilePaths",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
@@ -26,6 +31,8 @@
     "@types/react-dom": "18.0.1",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
+    "gh-pages": "^3.2.3",
+    "replace-in-file": "^6.3.2",
     "typescript": "4.6.3"
   }
 }
